@@ -2,7 +2,7 @@ from flask import Flask, request
 from twilio.rest import Client
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 TWILIO_SID = os.environ.get('TWILIO_SID')
 TWILIO_TOKEN = os.environ.get('TWILIO_TOKEN')
@@ -55,6 +55,6 @@ def webhook():
     except Exception as e:
         return {"status": "error", "message": str(e)}, 500
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host="0.0.0.0", port=port)
